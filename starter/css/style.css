@@ -1,7 +1,9 @@
-/*Reset CSS*/
+/*CSS Reset*/
 * {
+    /*ブラウザが要素に適用する可能性のあるデフォルトのマージンとパディングがリセット*/
     margin: 0;
     padding: 0;
+
     /*
     要素のパディングとボーダーが要素の指定された幅と高さに含まれるようになる
     レイアウトの予測がしやすくなる
@@ -29,9 +31,52 @@ body {
     /*背景画像を要素内に完全に収め、且つ、アスペクト比を維持し、画像が要素をカバーするように*/
     background-size: cover;
 
-    /*背景画像が要素の上部から表示される*/
+    /*要素の上部に背景画像を配置*/
     background-position: top;
+
+    /*https://developer.mozilla.org/ja/docs/Web/CSS/position*/
+    position: relative;
 
     /*https://bennettfeely.com/clippy/*/
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+}
+
+/*ページの左上角にロゴを配置する*/
+.logo-box {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.text-box {
+    /*要素をその親要素の中心に配置*/
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    /*要素はその自身の幅の50%分左に、高さの50%分上に移動*/
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff;
+    /*テキストを全て大文字に変換*/
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17px;
 }

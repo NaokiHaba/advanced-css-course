@@ -62,6 +62,8 @@ body {
     left: 50%;
     /*要素はその自身の幅の50%分左に、高さの50%分上に移動*/
     transform: translate(-50%, -50%);
+
+    text-align: center;
 }
 
 .heading-primary {
@@ -74,6 +76,8 @@ body {
     https://developer.mozilla.org/ja/docs/Web/CSS/backface-visibility
     */
     backface-visibility: hidden;
+
+    margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -156,4 +160,76 @@ body {
         opacity: 1;
         transform: translate(0);
     }
+}
+
+@keyframes moveInBottom {
+   0%{
+        opacity: 0; /* 要素を透明にする */
+        transform: translateY(30px); /* 要素を下に30px移動する */
+    }
+
+    100% {
+        opacity: 1; /* 要素を不透明にする */
+        transform: translate(0); /* 要素を元の位置に戻す */
+   }
+}
+
+/*未訪問のリンク要素にスタイルを適用*/
+.btn:link,
+    /*ユーザーが既に訪れたことのあるリンク要素にスタイルを適用*/
+.btn:visited {
+    text-transform: uppercase; /* テキストを大文字に変換 */
+    text-decoration: none; /* テキストの下線を削除 */
+    padding: 15px 40px; /* ボタンの内側の余白を設定 */
+    display: inline-block; /* インラインブロック要素として表示 */
+    border-radius: 100px; /* ボーダーラジウスを設定して円形のボタンにする */
+    transition: all .2s; /* すべてのプロパティに対して変化を0.2秒かけて行う */
+    position: relative; /* 要素を絶対位置に配置 */
+}
+
+.btn:hover {
+    transform: translateY(-3px); /* ホバー時に上に3px移動するアニメーション効果 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* ホバー時に影を付ける */
+}
+
+.btn:active {
+    transform: translateY(-1px); /* クリック時に少し上に移動するアニメーション効果 */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* クリック時に影を付ける */
+}
+
+.btn-white {
+    background-color: #ffffff;
+    color: #777;
+}
+
+.btn:after {
+    content: ""; /* 仮想要素にコンテンツを設定せず、空の内容とします */
+    display: inline-block;
+    /* インラインブロック要素として表示
+    要素がボタンの内部に配置され、ボタンの高さと幅に合わせて表示
+     */
+    height: 100%; /* 要素の高さを100%にする */
+    width: 100%; /* 要素の幅を100%にする */
+    border-radius: 100px; /* ボーダーラジウスを設定して円形のボタンにする */
+
+    position: absolute; /* 要素を絶対位置に配置 */
+    top: 0; /* 要素をボタンの上端に配置 */
+    left: 0; /* 要素をボタンの左端に配置 */
+    z-index: -1; /* 要素をボタンよりも下に配置 */
+
+    transition: all .4s; /* すべてのプロパティに対して変化を0.4秒かけて行う */
+}
+
+.btn-white:after {
+    background-color: #ffffff;
+}
+
+.btn:hover:after {
+    transform: scaleX(1.4) scaleY(1.6); /* ホバー時にボタンの幅を1.4倍、高さを1.6倍にする */
+    opacity: 0; /* ホバー時に要素を透明にする */
+}
+
+.btn-animated {
+    animation: moveInBottom .5s ease-out .75s; /* アニメーションを0.5秒かけて行う */
+    animation-fill-mode: backwards; /* アニメーションが終了したときに、要素をアニメーション前の状態に戻す */
 }

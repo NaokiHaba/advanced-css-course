@@ -1,54 +1,31 @@
-/*CSS Reset*/
 * {
-    /*ブラウザが要素に適用する可能性のあるデフォルトのマージンとパディングがリセット*/
-    margin: 0;
-    padding: 0;
-
-    /*
-    要素のパディングとボーダーが要素の指定された幅と高さに含まれるようになる
-    レイアウトの予測がしやすくなる
-    */
-    box-sizing: border-box;
+    margin: 0; /* 要素の外側の余白を0にする */
+    padding: 0; /* 要素の内側の余白を0にする */
+    box-sizing: border-box; /* 要素の幅と高さにボーダーとパディングを含める */
 }
 
 body {
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.7;
-    color: #777;
-    padding: 30px;
+    font-family: 'Noto Sans JP', sans-serif; /* フォントを設定 */
+    font-weight: 400; /* フォントの太さを設定 */
+    font-size: 16px; /* フォントサイズを設定 */
+    line-height: 1.7; /* 行の高さを設定 */
+    color: #777; /* テキストの色を設定 */
+    padding: 30px; /* ページの上下左右の余白を設定 */
 }
 
 .header {
-    height: 95vh;
-    background-image: linear-gradient(
-            to right bottom,
-            rgba(126, 213, 111, 0.8),
-            rgba(40, 180, 131, 0.8)),
-    url(../img/hero.jpg);
-
-    /*背景画像を要素内に完全に収め、且つ、アスペクト比を維持し、画像が要素をカバーするように*/
-    background-size: cover;
-
-    /*要素の上部に背景画像を配置*/
-    background-position: top;
-
-    /*https://developer.mozilla.org/ja/docs/Web/CSS/position*/
-    position: relative;
-
-    /*
-    https://bennettfeely.com/clippy/
-    切り取りパスを使用して、要素の形を変更する
-    */
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    height: 95vh; /* ヘッダーの高さを設定(vhはビューポートの高さに対する割合) */
+    background-image: linear-gradient(/* 背景にグラデーションを設定 */ to right bottom, /* グラデーションの方向を右下に設定 */ rgba(126, 213, 111, 0.8), /* グラデーションの開始色を設定 */ rgba(40, 180, 131, 0.8)), /* グラデーションの終了色を設定 */ url(../img/hero.jpg); /* 背景画像を設定 */
+    background-size: cover; /* 背景画像をカバーするように設定 */
+    background-position: top; /* 背景画像を上部に配置するように設定 */
+    position: relative; /* 要素をその現在の位置から上下左右に移動させる */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* 多角形のクリッピング領域を指定  */
 }
 
-/*ページの左上角にロゴを配置する*/
 .logo-box {
-    position: absolute;
-    top: 40px;
-    left: 40px;
+    position: absolute; /* 要素を絶対位置(指定した位置に固定)に配置 */
+    top: 40px; /* 要素を上から40pxの位置に配置 */
+    left: 40px; /* 要素を左から40pxの位置に配置 */
 }
 
 .logo {
@@ -56,57 +33,38 @@ body {
 }
 
 .text-box {
-    /*要素をその親要素の中心に配置*/
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    /*要素はその自身の幅の50%分左に、高さの50%分上に移動*/
-    transform: translate(-50%, -50%);
-
-    text-align: center;
+    position: absolute; /* 要素を絶対位置(指定した位置に固定)に配置 */
+    top: 40%; /* 要素を上から40%の位置に配置 */
+    left: 50%; /* 要素を左から50%の位置に配置 */
+    transform: translate(-50%, -50%); /* 要素を左上を基準に左右に50%、上下に50%移動 */
+    text-align: center; /* テキストを中央揃えにする */
 }
 
 .heading-primary {
     color: #fff;
-    /*テキストを全て大文字に変換*/
-    text-transform: uppercase;
-
-    /*
-    ユーザーに対して裏を向いたとき、背面が可視になります。
-    https://developer.mozilla.org/ja/docs/Web/CSS/backface-visibility
-    */
-    backface-visibility: hidden;
-
-    margin-bottom: 60px;
+    text-transform: uppercase; /* テキストを大文字に変換 */
+    backface-visibility: hidden; /* 要素の裏面を非表示にする */
+    margin-bottom: 60px; /* 要素の下側の余白を60pxにする */
 }
 
 .heading-primary-main {
-    /*新しい行から始まり、次の要素も新しい行から始まるように*/
+    /**
+    要素をブロック要素として表示
+    その要素が新しい行から始まり、横幅が親要素に合わせて広がり、独自の高さを持ち、余白を持つ
+     */
     display: block;
-    font-size: 60px;
-    font-weight: 400;
-
-    /*文字間（文字と文字の間のスペース）を35ピクセルに設定します。*/
-    letter-spacing: 35px;
-
-    /*アニメーションの名前を指定します。この名前は、@keyframesルールで定義*/
-    animation-name: moveInLeft;
-
-    /*アニメーションの持続時間*/
-    animation-duration: 1s;
-
-    /*アニメーションの速度カーブを指定します。'ease-out'は、アニメーションがゆっくりと終了*/
-    animation-timing-function: ease-out;
+    font-size: 60px; /* フォントサイズを60pxにする */
+    font-weight: 400; /* フォントの太さを400にする */
+    letter-spacing: 35px; /* 文字間の余白を35pxにする */
+    animation-name: moveInLeft; /* アニメーションを設定 */
+    animation-duration: 1s; /* アニメーションの持続時間を1秒に設定 */
+    animation-timing-function: ease-out; /* アニメーションが開始時に速く進み、終了時にゆっくりと停止する */
 
 
     /*
-    アニメーションが3回繰り返される
-    animation-iteration-count: 3;
-
-    アニメーションが始まるまでの遅延時間を3秒に設定
-    animation-delay: 3s;
+    animation-iteration-count: 3; //アニメーションの繰り返し回数を設定
+    animation-delay: 3s; //アニメーションの開始を3秒遅らせる
     */
-
 }
 
 .heading-primary-sub {
@@ -114,29 +72,26 @@ body {
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 17px;
-
-    /*
-    持続時間は1秒、そしてタイミング関数は'ease-out'（アニメーションが終了に向かってゆっくりと減速する）
-    */
-    animation: moveInRight 1s ease-out;
+    animation: moveInRight 1s ease-out; /*アニメーション名 接続時間 タイミング */
 }
 
+/* アニメーションのキーフレーム  */
 @keyframes moveInLeft {
-
     /*初期状態（0%）では、要素は完全に透明（opacity: 0）*/
-    /*左側（-100pxだけをX軸方向に移動）から表示が開始されます。*/
     0% {
-        opacity: 0;
-        transform: translateX(-100px);
+        opacity: 0; /* 透明度を0に設定（要素が不透明でない） */
+        transform: translateX(-100px); /* 左から-100px移動 */
     }
 
+    /*80%の時点では、要素は右側に移動します*/
     80% {
-        transform: translateX(10px);
+        transform: translateX(10px); /* 左から10px移動 */
     }
 
+    /*要素は完全に不透明になり（opacity: 1）、その位置は元の位置（translate(0)）に戻ります*/
     100% {
-        opacity: 1;
-        transform: translate(0);
+        opacity: 1; /* 透明度を1に設定（要素が完全に不透明になる） */
+        transform: translate(0); /* 移動しない（元の位置に戻る） */
     }
 }
 
@@ -163,7 +118,7 @@ body {
 }
 
 @keyframes moveInBottom {
-   0%{
+    0% {
         opacity: 0; /* 要素を透明にする */
         transform: translateY(30px); /* 要素を下に30px移動する */
     }
@@ -171,7 +126,7 @@ body {
     100% {
         opacity: 1; /* 要素を不透明にする */
         transform: translate(0); /* 要素を元の位置に戻す */
-   }
+    }
 }
 
 /*未訪問のリンク要素にスタイルを適用*/
